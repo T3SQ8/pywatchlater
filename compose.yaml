@@ -1,0 +1,17 @@
+services:
+  watchlater:
+    container_name: pywatchlater
+    build:
+      context: .
+      target: builder
+    stop_signal: SIGINT # flask requires SIGINT to stop gracefully (default stop signal from Compose is SIGTERM)
+    volumes:
+      - ./feeds:/feeds
+    ports:
+      - 8080:80
+    environment:
+      - "FEED_TITLE=Watch Later Feed"
+      - "FEED_DESCRIPTION=Watch Later Feed"
+      - "FEED_BASE_URL=https://watchlater.example.com"
+      - "FEED_FILE=/feeds/watch_later.xml"
+      - "FLASK_PORT=80"
