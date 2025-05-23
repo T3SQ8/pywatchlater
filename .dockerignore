@@ -1,0 +1,6 @@
+.dockerignore
+compose.yaml
+Dockerfile
+.git
+.gitignore
+.pre-commit-config.yaml
